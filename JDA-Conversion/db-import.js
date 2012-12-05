@@ -90,6 +90,7 @@ connection.query("SELECT * FROM seeds where verified != 2", function (err, rows,
                 }
             }
             jsonDict.items.push(item);
+            cb();
         }, function (err) {
             fs.writeFileSync('output.json', JSON.stringify(jsonDict));
             console.log("Done!");
