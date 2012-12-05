@@ -13,7 +13,8 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'jedarchi',
   password : password,
-  database: 'jedarchi_seeds'
+  database: 'jedarchi_seeds',
+  charset: 'UTF8_UNICODE_CI'
 });
 
 connection.connect();
