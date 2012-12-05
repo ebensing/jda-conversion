@@ -5,7 +5,8 @@ var password = cnfTxt.substring(cnfTxt.lastIndexOf("=") + 2, cnfTxt.length - 3);
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'jedarchi',
-    password: password
+    password: password,
+    database: 'jedarchi_seeds'
 });
 connection.connect();
 connection.query("SELECT * FROM Seeds where verified != 2", function (err, rows, fields) {
