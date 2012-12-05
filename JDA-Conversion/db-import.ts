@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
   user     : 'jedarchi',
   password : password,
   database: 'jedarchi_seeds',
-  charset: 'UTF8_UNICODE_CI'
+  charset: 'UTF8_GENERAL_CI'
 });
 
 connection.connect();
