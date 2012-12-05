@@ -18,6 +18,7 @@ connection.query("SELECT * FROM seeds where verified != 2", function (err, rows,
         console.log(err);
     } else {
         async.forEach(rows, function (x, cb) {
+            console.log("adding seed id: %d", x.sid);
             var item = {
             };
             item['title'] = x.title;
@@ -88,8 +89,11 @@ connection.query("SELECT * FROM seeds where verified != 2", function (err, rows,
                     item['tags'].push(tags[i].trim());
                 }
             }
+            jsonDict.items.push(item);
         }, function (err) {
             fs.writeFileSync('output.json', JSON.stringify(jsonDict));
+            console.log("Done!");
+            close();
         });
     }
 });
