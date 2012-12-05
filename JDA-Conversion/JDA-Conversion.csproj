@@ -21,11 +21,15 @@
     <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
-    <Content Include="default.htm" />
+    <Content Include=".gitignore" />
     <Content Include="app.js">
       <DependentUpon>app.ts</DependentUpon>
     </Content>
+    <Content Include="db-import.js">
+      <DependentUpon>db-import.ts</DependentUpon>
+    </Content>
+    <Content Include="node.d.ts" />
+    <TypeScriptCompile Include="db-import.ts" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
