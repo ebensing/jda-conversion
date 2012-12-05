@@ -17,7 +17,7 @@ connection.connect();
 
 connection.query("SELECT * FROM Seeds where verified != 2", function (err, rows, fields) {
     if (err) {
-        console.log("There be drgns here");
+        console.log(err);
     } else {
         console.log("working!!");
     }
