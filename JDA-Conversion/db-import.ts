@@ -28,7 +28,7 @@ connection.query("SELECT * FROM seeds where verified != 2", function (err, rows,
         console.log(err);
     } else {
         async.forEach(rows, function (x : any, cb) {
-            console.log("adding seed id: %d", x.sid);
+            console.log("adding seed title: %", x.title);
             var item = {};
             item['title'] = x.title;
             item['description'] = x.description;
