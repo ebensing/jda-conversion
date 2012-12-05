@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query("SELECT * FROM Seeds where verified != 2", function (err, rows, fields) {
+connection.query("SELECT * FROM seeds where verified != 2", function (err, rows, fields) {
     if (err) {
         console.log(err);
     } else {
