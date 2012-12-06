@@ -1,6 +1,8 @@
 var mysql = require('mysql');
 var async = require('async');
 var fs = require('fs');
+var iconv = require("iconv").Iconv;
+var Buffer = require('buffer').Buffer;
 var cnfTxt = fs.readFileSync('../../.my.cnf').toString();
 var password = cnfTxt.substring(cnfTxt.lastIndexOf("=") + 2, cnfTxt.length - 3);
 var connection = mysql.createConnection({
@@ -14,15 +16,19 @@ connection.connect();
 var jsonDict = {
     items: []
 };
+var conv = new iconv('latin1', 'UTF-8');
 connection.query("SELECT * FROM seeds where verified != 2", function (err, rows, fields) {
     if(err) {
         console.log(err);
     } else {
         async.forEach(rows, function (x, cb) {
-            console.log("adding seed title: %", x.title);
+            var mybuf = new Buffer(x.title.length * 3);
+            mybuf.write(x.title, 0, x.title.length, 'latin1');
+            var utf8title = (conv.convert(mybuf)).toString('utf8');
+            console.log("adding seed title: %", utf8title);
             var item = {
             };
-            item['title'] = x.title;
+            item['title'] = utf8title;
             item['description'] = x.description;
             item['uri'] = x.url;
             item['attribution_uri'] = x.url;
