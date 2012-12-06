@@ -4,7 +4,7 @@ var mysql = require('mysql');
 var async = require('async');
 
 var fs = require('fs');
-var iconv = require("iconv").Iconv;
+var iconv = require("iconv-jp").Iconv;
 var Buffer = require('buffer').Buffer;
 
 var cnfTxt = fs.readFileSync('../../.my.cnf').toString();
